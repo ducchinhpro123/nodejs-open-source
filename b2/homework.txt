@@ -2,93 +2,93 @@
   "osType": "Linux",
   "platform": "linux",
   "ram": 10298605568,
-  "usedRam": 5207449600,
+  "usedRam": 2268008448,
   "CPU": [
     {
       "model": "AMD Ryzen 7 3700U with Radeon Vega Mobile Gfx",
-      "speed": 1533,
+      "speed": 3425,
       "times": {
-        "user": 721600,
-        "nice": 2420,
-        "sys": 465270,
-        "idle": 10621570,
+        "user": 1089740,
+        "nice": 2650,
+        "sys": 624630,
+        "idle": 15249500,
         "irq": 0
       }
     },
     {
       "model": "AMD Ryzen 7 3700U with Radeon Vega Mobile Gfx",
-      "speed": 1473,
+      "speed": 3440,
       "times": {
-        "user": 713470,
-        "nice": 1860,
-        "sys": 420930,
-        "idle": 10935040,
+        "user": 1102220,
+        "nice": 2050,
+        "sys": 561230,
+        "idle": 15641020,
         "irq": 0
       }
     },
     {
       "model": "AMD Ryzen 7 3700U with Radeon Vega Mobile Gfx",
-      "speed": 3372,
+      "speed": 1530,
       "times": {
-        "user": 788150,
-        "nice": 3160,
-        "sys": 497360,
-        "idle": 10697050,
+        "user": 1159450,
+        "nice": 3400,
+        "sys": 640760,
+        "idle": 15366860,
         "irq": 0
       }
     },
     {
       "model": "AMD Ryzen 7 3700U with Radeon Vega Mobile Gfx",
-      "speed": 3451,
+      "speed": 2300,
       "times": {
-        "user": 745580,
-        "nice": 3010,
-        "sys": 424680,
-        "idle": 10913130,
+        "user": 1113900,
+        "nice": 3210,
+        "sys": 557130,
+        "idle": 15653780,
         "irq": 0
       }
     },
     {
       "model": "AMD Ryzen 7 3700U with Radeon Vega Mobile Gfx",
-      "speed": 1500,
+      "speed": 1530,
       "times": {
-        "user": 822220,
-        "nice": 1890,
-        "sys": 495940,
-        "idle": 10664500,
+        "user": 1212300,
+        "nice": 2180,
+        "sys": 659230,
+        "idle": 15307760,
         "irq": 0
       }
     },
     {
       "model": "AMD Ryzen 7 3700U with Radeon Vega Mobile Gfx",
-      "speed": 2237,
+      "speed": 1529,
       "times": {
-        "user": 771600,
-        "nice": 1700,
-        "sys": 425270,
-        "idle": 10892680,
+        "user": 1181370,
+        "nice": 1950,
+        "sys": 564920,
+        "idle": 15579610,
         "irq": 0
       }
     },
     {
       "model": "AMD Ryzen 7 3700U with Radeon Vega Mobile Gfx",
-      "speed": 1551,
+      "speed": 1529,
       "times": {
-        "user": 833690,
-        "nice": 1960,
-        "sys": 483640,
-        "idle": 10680650,
+        "user": 1227020,
+        "nice": 2110,
+        "sys": 649080,
+        "idle": 15345300,
         "irq": 0
       }
     },
     {
       "model": "AMD Ryzen 7 3700U with Radeon Vega Mobile Gfx",
-      "speed": 1557,
+      "speed": 1530,
       "times": {
-        "user": 783120,
-        "nice": 2080,
-        "sys": 454280,
-        "idle": 10847850,
+        "user": 1162370,
+        "nice": 2510,
+        "sys": 599240,
+        "idle": 15568270,
         "irq": 0
       }
     }
