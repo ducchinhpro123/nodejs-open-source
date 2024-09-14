@@ -17,12 +17,12 @@ var information = {
   CPU: os.cpus(),
 };
 
-http .createServer((req, res) => {
-    res.end(JSON.stringify(information, null, 2));
-  }).listen(3000);
-  
+http.createServer((req, res) => {
+  res.end(JSON.stringify(information, null, 2));
+}).listen(3000);
 
-fs.writeFile( "/home/duchinh/programming/nodejs/b2/homework.txt",
+
+fs.writeFile("/home/duchinh/programming/nodejs/b2/homework.txt",
   JSON.stringify(information, null, 2), (err) => {
     if (err) {
       console.log(err);
