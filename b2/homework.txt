@@ -1,0 +1,96 @@
+{
+  "osType": "Linux",
+  "platform": "linux",
+  "ram": 10298605568,
+  "usedRam": 5596876800,
+  "CPU": [
+    {
+      "model": "AMD Ryzen 7 3700U with Radeon Vega Mobile Gfx",
+      "speed": 3441,
+      "times": {
+        "user": 704310,
+        "nice": 2220,
+        "sys": 452710,
+        "idle": 10287340,
+        "irq": 0
+      }
+    },
+    {
+      "model": "AMD Ryzen 7 3700U with Radeon Vega Mobile Gfx",
+      "speed": 3442,
+      "times": {
+        "user": 696160,
+        "nice": 1600,
+        "sys": 407800,
+        "idle": 10593380,
+        "irq": 0
+      }
+    },
+    {
+      "model": "AMD Ryzen 7 3700U with Radeon Vega Mobile Gfx",
+      "speed": 1530,
+      "times": {
+        "user": 771190,
+        "nice": 2990,
+        "sys": 483430,
+        "idle": 10358810,
+        "irq": 0
+      }
+    },
+    {
+      "model": "AMD Ryzen 7 3700U with Radeon Vega Mobile Gfx",
+      "speed": 1529,
+      "times": {
+        "user": 729310,
+        "nice": 2810,
+        "sys": 413750,
+        "idle": 10567010,
+        "irq": 0
+      }
+    },
+    {
+      "model": "AMD Ryzen 7 3700U with Radeon Vega Mobile Gfx",
+      "speed": 1530,
+      "times": {
+        "user": 802620,
+        "nice": 1650,
+        "sys": 482260,
+        "idle": 10327630,
+        "irq": 0
+      }
+    },
+    {
+      "model": "AMD Ryzen 7 3700U with Radeon Vega Mobile Gfx",
+      "speed": 1530,
+      "times": {
+        "user": 754480,
+        "nice": 1410,
+        "sys": 413580,
+        "idle": 10548930,
+        "irq": 0
+      }
+    },
+    {
+      "model": "AMD Ryzen 7 3700U with Radeon Vega Mobile Gfx",
+      "speed": 1529,
+      "times": {
+        "user": 813580,
+        "nice": 1710,
+        "sys": 470320,
+        "idle": 10341690,
+        "irq": 0
+      }
+    },
+    {
+      "model": "AMD Ryzen 7 3700U with Radeon Vega Mobile Gfx",
+      "speed": 2300,
+      "times": {
+        "user": 765520,
+        "nice": 1850,
+        "sys": 442900,
+        "idle": 10502430,
+        "irq": 0
+      }
+    }
+  ]
+}
