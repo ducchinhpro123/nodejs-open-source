@@ -9,7 +9,7 @@ eventEmitter.on("writtenSuccessfully", () => {
   console.log("Completed Task!");
 })
 
-var information = {
+const information = {
   osType: os.type(),
   platform: os.platform(),
   ram: os.totalmem(),
@@ -17,10 +17,14 @@ var information = {
   CPU: os.cpus(),
 };
 
-http.createServer((req, res) => {
+const server = http.createServer((req, res) => {
+  res.writeHead(200, { "Content-Type": "application/json" });
   res.end(JSON.stringify(information, null, 2));
-}).listen(3000);
+});
 
+server.listen(3000, () => {
+  console.log("Server is listening on port 3000");
+})
 
 fs.writeFile("/home/duchinh/programming/nodejs/b2/homework.txt",
   JSON.stringify(information, null, 2), (err) => {
