@@ -15,7 +15,7 @@ server.set('views', path.join(__dirname));
 server.engine('html', ejs.renderFile);
 server.set('view engine', 'html');
 
-server.get('/', (req, res) => {
+server.get('/', (_req, res) => {
   res.render('index.html', { jobExperience: jobExperience });
 }).listen(port, () => {
   console.log(`Server is running on port ${port}`);
