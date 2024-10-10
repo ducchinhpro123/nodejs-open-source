@@ -1,23 +1,26 @@
-import express from 'express';
-import morgan from 'morgan';
-import path from 'path';
-import ejs from 'ejs';
+import express           from 'express';
+import morgan            from 'morgan';
+import path              from 'path';
+import ejs               from 'ejs';  // Template engine
 import { fileURLToPath } from 'url';
-import jobExperience from "./jobExperience.js";
+
+import routeHome         from './routes/home.js';
+import routeJob          from './routes/job.js';
 
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
 
-const server = express();
+const app = express();
 const port = 3000;
 
-server.use(morgan("common"));
-server.set('views', path.join(__dirname));
-server.engine('html', ejs.renderFile);
-server.set('view engine', 'html');
+app.use(morgan("common"));  // For better log
+app.set('./views', path.join(__dirname));  // root/views/
+app.engine('html', ejs.renderFile);
+app.set('view engine', 'html');
+app.use(express.static('./public'));  // Serving static files in folder public
+//app.set('view engine', 'ejs');
 
-server.get('/', (_req, res) => {
-  res.render('index.html', { jobExperience: jobExperience });
-}).listen(port, () => {
-  console.log(`Server is running on port ${port}`);
-});
+app.use(routeHome); 
+app.use(routeJob); 
+
+app.listen(port);
 
