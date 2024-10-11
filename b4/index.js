@@ -9,7 +9,7 @@ import routeJob          from './routes/job.js';
 
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
 
-const app = express();
+const app  = express();
 const port = 3000;
 
 app.use(morgan("common"));  // For better log
