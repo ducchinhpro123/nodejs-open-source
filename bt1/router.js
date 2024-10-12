@@ -1,61 +1,20 @@
-# Summary about this branch
-
-`bt1/views/loginForm.html`
-
-```html
-<form action="/login" method=POST>
-  <div class="mb-3">
-    <label for="username" class="form-label"
-      >Username</label
-    >
-    <input
-      type="text"
-      class="form-control"
-      id="username"
-      name="username"
-      aria-describedby="emailHelp"
-    />
-  </div>
-  <div class="mb-3">
-    <label for="exampleInputPassword1" class="form-label">Password</label>
-    <input
-      type="password"
-      class="form-control"
-      id="exampleInputPassword1"
-      name="password"
-    />
-  </div>
-  <button type="submit" class="btn btn-primary">Submit</button>
-</form>
-```
-
-`bt1/index.js`
-```html
 import express           from 'express';
-import morgan            from 'morgan';
-import ejs               from 'ejs';  // Template engine
+import fs                from 'fs';
+import bodyParser        from 'body-parser';
+import path              from 'path';
+import { fileURLToPath } from 'url';
 
-import router            from './router.js';
+const router = express.Router();
+router.use(bodyParser.json());
+router.use(bodyParser.urlencoded({extended: true}));
 
-const app  = express();
-const port = 3000;
+const __dirname = path.dirname(fileURLToPath(import.meta.url));
 
-app.use(morgan("common"));  // For better log
-//app.set('./views', path.join(__dirname));  // root/views/
-app.engine('html', ejs.renderFile);
-app.set('view engine', 'html');
-app.use(express.static('./public'));  // Serving static files in folder public
-//app.set('view engine', 'ejs');
+router.get('/', (_req, res) => {
+  res.render('loginForm.html', {message: "Please fill out the form."});
+});
 
-app.use(router); 
 
-app.listen(port);
-
-```
-
-`bt1/router.js`
-
-```javascript
 function getUserTxtCretical() {
   const filePath = path.join(__dirname, 'user.txt');
 
@@ -93,4 +52,5 @@ router.post('/login', async (req, res) => {
 
   res.render('loginForm.html', {message: message});
 });
-```
+
+export default router;
