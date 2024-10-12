@@ -4,8 +4,7 @@ import path              from 'path';
 import ejs               from 'ejs';  // Template engine
 import { fileURLToPath } from 'url';
 
-import routeHome         from './routes/home.js';
-import routeJob          from './routes/job.js';
+import rootRouter         from './routes/root.js';
 
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
 
@@ -19,8 +18,7 @@ app.set('view engine', 'html');
 app.use(express.static('./public'));  // Serving static files in folder public
 //app.set('view engine', 'ejs');
 
-app.use(routeHome); 
-app.use(routeJob); 
+app.use(rootRouter); 
 
 app.listen(port);
 
