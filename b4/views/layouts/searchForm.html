@@ -1,0 +1,21 @@
+<div class="container">
+  <form id="myForm">
+    <div class="mb-3">
+      <label for="exampleInputEmail1" class="form-label">Search for Vehicle VietNam number</label>
+      <input type="text" name="province" class="form-control" id="province">
+    </div>
+    <button type="submit" class="btn btn-primary">Submit</button>
+  </form>
+  <div class="center">
+    <% if (plate_no=='' ) { %>
+      <p>I can't find any plate number with that <i>
+          <%= province %>
+        </i>.</p>
+      <% } else { %>
+        <b>
+          <p>I found that result: <%= plate_no %>
+          </p>
+        </b>
+        <% } %>
+  </div>
+</div>
