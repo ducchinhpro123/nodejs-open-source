@@ -1,65 +1,96 @@
 # Summary about this branch
 
-`b4/views/searchVehicleNumber.html`
+`bt1/views/loginForm.html`
 
 ```html
-<!DOCTYPE html>
-<html>
-
-<head>
-  <title>W3.CSS Template</title>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-
-  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
-    integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
-
-  <!--<link rel="stylesheet" href="/styles/style.css">-->
-</head>
-  <%- include('layouts/header.html') %>
-
-  <%- include('layouts/searchForm.html') %>
-
-  <%- include('layouts/footer.html') %>
-</html>
-```
-
-`b4/views/layouts/searchForm.html`
-```html
-<div class="container">
-  <form id="myForm">
-    <div class="mb-3">
-      <label for="exampleInputEmail1" class="form-label">Search for Vehicle VietNam number</label>
-      <input type="text" name="province" class="form-control" id="province">
-    </div>
-    <button type="submit" class="btn btn-primary">Submit</button>
-  </form>
-  <div class="center">
-    <% if (plate_no=='' ) { %>
-      <p>I can't find any plate number with that <i> <%= province %> </i>.</p>
-    <% } else { %>
-        <b> <p>I found that result: <%= plate_no %> </p> </b>
-     <% } %>
+<form action="/login" method=POST>
+  <div class="mb-3">
+    <label for="username" class="form-label"
+      >Username</label
+    >
+    <input
+      type="text"
+      class="form-control"
+      id="username"
+      name="username"
+      aria-describedby="emailHelp"
+    />
   </div>
-</div>
+  <div class="mb-3">
+    <label for="exampleInputPassword1" class="form-label">Password</label>
+    <input
+      type="password"
+      class="form-control"
+      id="exampleInputPassword1"
+      name="password"
+    />
+  </div>
+  <button type="submit" class="btn btn-primary">Submit</button>
+</form>
 ```
 
-`b4/routes/root.js`
+`bt1/index.js`
+```html
+import express           from 'express';
+import morgan            from 'morgan';
+import ejs               from 'ejs';  // Template engine
+
+import router            from './router.js';
+
+const app  = express();
+const port = 3000;
+
+app.use(morgan("common"));  // For better log
+//app.set('./views', path.join(__dirname));  // root/views/
+app.engine('html', ejs.renderFile);
+app.set('view engine', 'html');
+app.use(express.static('./public'));  // Serving static files in folder public
+//app.set('view engine', 'ejs');
+
+app.use(router); 
+
+app.listen(port);
+
+```
+
+`bt1/router.js`
 
 ```javascript
-const dataMap = new Map(data.map(item => [item.city, item.plate_no]));
+function getUserTxtCretical() {
+  const filePath = path.join(__dirname, 'user.txt');
 
-route.get('/search-vehicle-number/', (req, res) => {
-  const q = req.query.province;
-  //for (let i = 0; i < data.length; i++) {
-  //  if (q == data[i]['city']) {
-  //    result = data[i]['plate_no'];
-  //    break;
-  //  };
-  //};
-  //console.log(dataMap.get('Hậu Giang'));
+  return new Promise((resolve, reject) => {
+    fs.readFile(filePath, 'utf-8', (err, data) => {
+      if (err) {
+        console.log(`Failed to read user.txt ${err.message}`);
+        return reject("Failed to read user.txt");
+      };
+      let raw_username = data.split("\n")[0];
+      let raw_password = data.split("\n")[1];
+      const txt_username = raw_username.split(':')[1].trim();
+      const txt_password = raw_password.split(':')[1].trim();
+      return resolve({txt_username, txt_password});
+    });
+  });
+};
 
-  const result = dataMap.get(q) || '';
-  res.render('searchVehicleNumber.html', {plate_no: result, province: q});
+router.post('/login', async (req, res) => {
+  let message = '';
+  const {username, password} = req.body;
+  if (username != null && password != null) {
+    try {
+      const {txt_username, txt_password} = await getUserTxtCretical();
+      if (username === txt_username && password === txt_password) {
+        message = `Your username: ${txt_username}, password: ${txt_password}`;
+      } else {
+        message = 'Login Failed';
+      };
+    } catch (error) {
+      console.error(error.message);
+      message = error.message;
+    };
+  };
+
+  res.render('loginForm.html', {message: message});
 });
 ```
