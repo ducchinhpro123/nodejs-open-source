@@ -30,7 +30,7 @@
 ```
 
 `bt1/index.js`
-```html
+```javascript
 import express           from 'express';
 import morgan            from 'morgan';
 import ejs               from 'ejs';  // Template engine
