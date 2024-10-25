@@ -2,6 +2,7 @@
   <% blogs.forEach(blog => { %>
     <li>
       <h2><a href="/blog/<%= blog.id %>"> <%= blog.title %> </a> </h2>
+      <a href="/blog/delete/<%= blog.id %>">Click to delete</a>
       <p> Author: <%= blog.author %> </p>
       <p> <%= blog.date %> </p>
     </li>

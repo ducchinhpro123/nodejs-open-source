@@ -4,7 +4,7 @@ export const createBlog = async (req, res) => {
   try {
     const newBlog = new Blog(req.body);
     const blog = await newBlog.save();
-    res.status(201).json(blog);
+    //res.status(201).json(blog);
     console.log("Written successfully!");
     res.redirect("/blogs");
   } catch (err) {
@@ -20,6 +20,15 @@ export const getBlog = async (id) => {
     res.status(500).json({message: err.message});
   }
 };
+
+export const deleteBlog = async (id) => {
+  try {
+    await Blog.findByIdAndDelete(id);
+    return true
+  } catch (err) {
+    res.status(500).json({message: err.messsage});
+  }
+}
 
 export const getAllBlogs = async (_req, res) => {
   try {

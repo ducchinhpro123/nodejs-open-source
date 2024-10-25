@@ -1,5 +1,5 @@
 import express from 'express';
-import {createBlog, getAllBlogs, getBlog} from '../controller/blogController.js';
+import {createBlog, getAllBlogs, getBlog, deleteBlog} from '../controller/blogController.js';
 
 const router = express.Router();
 
@@ -7,9 +7,18 @@ router.post('/blogs', createBlog);
 
 router.get('/blogs', async (_req, res) => {
   const blogs = await getAllBlogs();
-  //console.log(blogs);
   res.render('index', {'blogs': blogs});
 });
+
+router.get('/blog/delete/:id', async (req, res) => {
+  const id = req.params.id;
+  try {
+    deleteBlog(id);
+    res.redirect("/blogs");
+  } catch (err) {
+    res.render("404", {"message": err.message});
+  }
+})
 
 router.get('/blog/:id', async (req, res) => {
   const id = req.params.id;
