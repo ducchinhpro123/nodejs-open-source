@@ -11,4 +11,4 @@ function connectMongoDB() {
 }
 
 
-export connectMongoDB;
+export default connectMongoDB;

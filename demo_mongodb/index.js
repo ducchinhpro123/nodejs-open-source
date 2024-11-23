@@ -1,7 +1,7 @@
 import express            from "express";
 import bodyParser         from "body-parser";
 
-import { connectMongoDB } from "./config/connectMongoDB.js";
+import  connectMongoDB    from "./config/connectMongoDB.js";
 import __dirname          from "./dirname.js";
 import { bookingRouter }  from "./routes/booking_route.js";
 
