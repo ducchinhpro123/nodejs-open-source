@@ -1,7 +1,14 @@
 import mongoose from 'mongoose';
+import dotenv from 'dotenv';
 
-function connectToMongoDB() {
-  mongoose.connect("mongodb://localhost:27017/test").then(() => console.log("MongoDB connected"));
-};
+dotenv.config();
+const uri = process.env.MONGODB_API;
 
-export default connectToMongoDB;
+function connectMongoDB() {
+  mongoose.connect(uri)
+    .then(() => console.log("Connected to mongoose database"))
+    .catch(error => console.log("Cannot connect to the database", error));
+}
+
+
+export connectMongoDB;

@@ -1,0 +1,45 @@
+<!doctype html>
+<html lang="en">
+
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Form</title>
+    <link rel="stylesheet" href="/css/style.css">
+  </head>
+
+  <body>
+    <header>
+      <%- include('layouts/header'); %>
+    </header>
+    <hr>
+    </hr>
+
+    <div class="form">
+      <div>
+        <h1 style="text-align:center">Create your first blog</h1>
+        <form action="/booking/accommodation" method=POST>
+          <div class="form-group">
+            <label> Customer's name </label>
+            <input type="text" id="customeraNme" name="customerName" required>
+          </div>
+
+          <!-- id: Number, -->
+          <!-- customerName: String, -->
+          <!-- date: { type: Date, default: Date.now }, -->
+          <!-- time: {type: Date, default: Date.now}, -->
+          <!-- status: {type: status, default: status.Pending} -->
+          <div class="form-group">
+            <label for="date">Date:</label>
+            <input type="date" id="date" name="date"><br><br>
+          </div>
+          <button type="submit">Submit</button>
+        </form>
+      </div>
+    </div>
+
+
+    <%- include('layouts/footer'); %>
+  </body>
+
+</html>
