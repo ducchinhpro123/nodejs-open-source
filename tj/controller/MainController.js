@@ -14,7 +14,13 @@ class MainController {
         }
 
         static async home(req, res) {
-                return res.render('home');
+                let username = null;
+                let user_id = null;
+                if (req.user) {
+                        username = req.user.username;
+                        user_id = req.user.user_id;
+                };
+                return res.render('home', {username: username, user_id: user_id});
         }
 
         static async register(req, res) {
@@ -66,7 +72,7 @@ class MainController {
                                                 httpOnly: true,
                                                 maxAge: 3600000,
                                         });
-                                        return res.render('home');
+                                        return res.render('home', {username: person.username, user_id: person._id});
                                 } catch (error) {
                                         return res.render('fail', {message: `JWT error ${error}`});
                                 }
