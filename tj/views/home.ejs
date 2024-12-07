@@ -2,14 +2,57 @@
 <html>
 
 <head>
+    <script type="text/javascript">
+        const ws = new WebSocket('ws://localhost:3000');
+        ws.onopen = function() {
+            document.querySelector('#send').disabled = false;
+
+            document.querySelector('#send').addEventListener('click', sendMessage);
+            document.querySelector('#message').addEventListener('keypress', function(e) {
+                if (e.key == 'Enter') {
+                    sendMessage();
+                }
+            });
+        };
+
+        function sendMessage() {
+            const inputElement = document.querySelector('#message');
+            const input = inputElement.value;
+            const username = '<%= username %>';
+            if (input) {
+                const message = `${username}: ${input}`;
+                inputElement.value = '';
+                ws.send(message);
+            }
+        }
+
+        ws.onmessage = function(msg) {
+            const reader = new FileReader();
+            reader.onload = function() {
+                document.querySelector('#messages').innerHTML += `<div>${reader.result}</div>`
+            };
+            reader.readAsText(msg.data);
+        };
+
+    </script>
+
     <title>Home Page</title>
-    <link rel="stylesheet">
+    <link rel="stylesheet" href="/css/style.css">
 </head>
 
 <body>
+    <a href="/logout">Logout</a>
     <div class="main">
-        Hello World
-        <a href="/logout">Logout</a>
+        Hello <%= username %>
+    </div>
+    <div>
+        Your id: <%= user_id %>
+    </div>
+    <div>
+        <input id="message" placeholder="Message">
+        <button id="send" disabled="true">Send</button>
+    </div>
+    <div id="messages">
     </div>
 </body>
 
